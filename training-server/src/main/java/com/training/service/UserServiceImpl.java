@@ -42,4 +42,7 @@ public class UserServiceImpl implements UserService {
     public User update(User user) {
         return repository.save(user);
     }
+
+    // TODO: do filter with java stream
+    
 }

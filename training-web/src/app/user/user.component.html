@@ -19,6 +19,11 @@
     <td>{{user.email}}</td>
     <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete User</button></td>
   </tr>
+
+  <h2>test 2</h2>
+  <tr *ngFor="let name of userFirstNameFromList">
+    <td>{{name}}</td>
+  </tr>
   </tbody>
 </table>
 </div>
