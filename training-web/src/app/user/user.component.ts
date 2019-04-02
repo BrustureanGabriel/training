@@ -12,7 +12,8 @@ import { UserService } from './user.service';
 export class UserComponent implements OnInit {
 
   users: User[];
-
+  userFirstNameFromList: Array<String> = new Array<String>();
+  userFirstNameFromBackEnd: Array<String>;
   constructor(private router: Router, private userService: UserService) {
 
   }
@@ -21,7 +22,12 @@ export class UserComponent implements OnInit {
     this.userService.getUsers()
       .subscribe( data => {
         this.users = data;
+        this.users.forEach( user => {
+          this.userFirstNameFromList.push(user.firstName);
+        })
       });
+
+    // TODO: trigger call to BE
   };
 
   deleteUser(user: User): void {
