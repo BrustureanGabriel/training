@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -40,6 +41,20 @@ public class UserController {
     @DeleteMapping(path ={"/{id}"})
     public User delete(@PathVariable("id") int id) {
         return userService.delete(id);
+    }
+
+
+    @GetMapping(path = {"/first-name"})
+    public List<String> getAllFirstName()
+    {
+        return
+            userService.findAll().stream()
+                //filter for those with firstname != null
+                .filter(user -> user.getFirstName() != null)
+                //map user to string
+                .map(User::getFirstName)
+                //collect to list
+                .collect(Collectors.toList());
     }
 
     // TODO: here
