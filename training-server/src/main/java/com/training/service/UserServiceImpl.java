@@ -5,6 +5,7 @@ import com.training.model.User;
 import com.training.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.stream.Collectors;
 
 import java.util.List;
 
@@ -44,5 +45,8 @@ public class UserServiceImpl implements UserService {
     }
 
     // TODO: do filter with java stream
-    
+    public List<String>  personsByFirstName() {
+            return Lists.newArrayList(repository.findAll()).stream().map(User::getFirstName)
+                .collect(Collectors.toList());
+    }
 }

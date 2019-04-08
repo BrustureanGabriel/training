@@ -1,7 +1,7 @@
 package com.training.service;
 
 import com.training.model.User;
-
+import com.training.controller.UserController;
 import java.util.List;
 
 public interface UserService {
@@ -15,4 +15,6 @@ public interface UserService {
     User findById(int id);
 
     User update(User user);
+
+
 }
